@@ -1,0 +1,118 @@
+# Daily AI Insights — Data Sources (SRS §3)
+# Each source has: id, name, tier (1-4), type, url, confidence (0..1), enabled.
+
+sources:
+  # ---- Tier 1: 高可信度 / 巨頭與底層模型 ----
+  - id: openai_blog
+    name: OpenAI Blog
+    tier: 1
+    type: rss
+    url: https://openai.com/blog/rss.xml
+    confidence: 0.95
+    enabled: true
+
+  - id: anthropic_news
+    name: Anthropic News
+    tier: 1
+    type: rss
+    url: https://www.anthropic.com/news/rss.xml
+    confidence: 0.95
+    enabled: true
+
+  - id: google_ai_blog
+    name: Google AI Blog
+    tier: 1
+    type: rss
+    url: https://blog.google/technology/ai/rss/
+    confidence: 0.9
+    enabled: true
+
+  - id: google_keyword
+    name: Google The Keyword
+    tier: 1
+    type: rss
+    url: https://blog.google/rss/
+    confidence: 0.85
+    enabled: true
+
+  - id: hf_blog
+    name: Hugging Face Blog
+    tier: 1
+    type: rss
+    url: https://huggingface.co/blog/feed.xml
+    confidence: 0.85
+    enabled: true
+
+  # ---- Tier 2: 技術與研究社群 ----
+  - id: hacker_news
+    name: Hacker News Front Page
+    tier: 2
+    type: hn_api
+    url: https://hacker-news.firebaseio.com/v0/topstories.json
+    confidence: 0.7
+    enabled: true
+
+  - id: github_trending
+    name: GitHub Trending (AI)
+    tier: 2
+    type: github_trending
+    url: https://github.com/trending?since=daily&spoken_language_code=
+    confidence: 0.7
+    enabled: true
+
+  - id: arxiv_ai
+    name: arXiv cs.AI
+    tier: 2
+    type: rss
+    url: https://export.arxiv.org/rss/cs.AI
+    confidence: 0.75
+    enabled: true
+
+  - id: papers_with_code
+    name: Papers With Code
+    tier: 2
+    type: rss
+    url: https://paperswithcode.com/latest.atom
+    confidence: 0.75
+    enabled: false   # site sometimes blocks; toggle when ready
+
+  # ---- Tier 3: 教育與政策 ----
+  - id: edsurge
+    name: EdSurge
+    tier: 3
+    type: rss
+    url: https://www.edsurge.com/articles_rss
+    confidence: 0.7
+    enabled: true
+
+  - id: nstc_tw
+    name: 台灣國科會
+    tier: 3
+    type: rss
+    url: https://www.nstc.gov.tw/rss
+    confidence: 0.8
+    enabled: true
+
+  # ---- Tier 4: 金融市場 ----
+  - id: yahoo_finance_ai
+    name: Yahoo Finance AI
+    tier: 4
+    type: rss
+    url: https://finance.yahoo.com/news/rssindex
+    confidence: 0.6
+    enabled: true
+
+# Per-tier defaults
+tier_defaults:
+  1:
+    fetch_limit: 20
+    weight_bonus: 1.2
+  2:
+    fetch_limit: 30
+    weight_bonus: 1.0
+  3:
+    fetch_limit: 15
+    weight_bonus: 0.9
+  4:
+    fetch_limit: 10
+    weight_bonus: 0.8

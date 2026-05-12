@@ -1,0 +1,36 @@
+{% extends "_base.html" %}
+{% block title %}歷史檔案 · {{ site.title }}{% endblock %}
+{% block og_title %}{{ site.title }} 歷史檔案{% endblock %}
+{% block og_desc %}日期、tag、分類篩選的歷史 AI 情報檔案{% endblock %}
+{% block og_url %}{{ site_base_url }}/archive.html{% endblock %}
+{% block content %}
+
+<h1 class="text-2xl font-semibold tracking-tight mb-1">歷史檔案</h1>
+<p class="text-slate-500 text-sm mb-6">共 {{ editions|length }} 期。用上方搜尋框可全文搜尋。</p>
+
+<div class="mb-6 flex gap-2 flex-wrap" id="filter-bar">
+  <input id="filter-date" type="date" class="px-2 py-1 rounded-md border border-slate-200
+       dark:border-slate-700 bg-white dark:bg-slate-900 text-sm">
+  <select id="filter-section" class="px-2 py-1 rounded-md border border-slate-200
+       dark:border-slate-700 bg-white dark:bg-slate-900 text-sm">
+    <option value="">全部分類</option>
+  </select>
+  <input id="filter-tag" placeholder="輸入 tag (例: agents)" class="px-2 py-1 rounded-md border
+       border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm">
+  <button id="clear-filters" class="text-sm text-slate-500 hover:text-rose-600">清除</button>
+</div>
+
+<ul class="space-y-2" id="edition-list">
+  {% for e in editions %}
+  <li class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 flex items-center justify-between">
+    <div>
+      <a class="font-semibold hover:text-emerald-700 dark:hover:text-emerald-400" href="{{ path_prefix }}/{{ e.url }}">{{ e.date }}</a>
+      <span class="ml-2 text-xs text-slate-500">{{ e.article_count }} 則</span>
+    </div>
+    <a class="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-white" href="{{ path_prefix }}/{{ e.url }}data.json">JSON</a>
+  </li>
+  {% endfor %}
+</ul>
+
+<div id="search-results" class="mt-6"></div>
+{% endblock %}

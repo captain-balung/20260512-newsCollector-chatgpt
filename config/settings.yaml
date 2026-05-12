@@ -1,0 +1,76 @@
+# General system settings (SRS §1, §6, §7, §11, §12, §14, §17)
+
+site:
+  title: Daily AI Insights
+  subtitle: AI 產業每日決策情報系統
+  author: Captain Balung
+  locale: zh-TW
+  timezone: Asia/Taipei
+
+pipeline:
+  fetch_window_hours: 36          # how far back to consider items "today's"
+  per_section_min: 2
+  per_section_max: 3
+  max_articles_total: 18          # 6 sections × 3 = 18 (cap)
+  min_articles_for_publish: 6     # alert if below
+
+sections:
+  - id: giants_market
+    icon: "🏢"
+    label: 巨頭動向與市場脈動
+  - id: dev_tools_agent
+    icon: "🛠️"
+    label: 開發者工具與 AI Agent
+  - id: generative_media
+    icon: "🎵"
+    label: 生成式多媒體與創作
+  - id: edu_tech
+    icon: "📚"
+    label: 教育科技與應用創新
+  - id: infra_open_source
+    icon: "🧠"
+    label: 底層架構與開源模型
+  - id: law_ethics_society
+    icon: "⚖️"
+    label: 法律倫理與社會衝擊
+
+trend:                              # SRS §6
+  windows_days: [7, 14, 30]
+  min_recurrence: 3                 # how many days a keyword must appear to count
+  top_topics: 10
+
+agent:                              # SRS Phase 3
+  enabled: true
+  discovery_max_candidates: 5
+  evaluator_min_score: 7.5
+  source_expansion_review_required: true
+
+publish:
+  email_send_time: "09:00"          # local time (timezone above)
+  email_max_size_kb: 500
+  output_html: true
+  output_json: true
+  output_markdown: true
+  site_languages: [zh-TW]
+
+retry:                              # SRS §12.1
+  max_retry: 3
+  backoff_base_seconds: 2
+  backoff_mode: exponential
+
+fallbacks:                          # SRS §12.2
+  - cached_data
+  - previous_successful_run
+
+cost:                               # SRS §14
+  # Empty values = unlimited; override via env DAILY_TOKEN_BUDGET / MONTHLY_TOKEN_BUDGET
+  daily_token_budget: null
+  monthly_token_budget: null
+  high_cost_models_used_for: [summarize, insight, narrative]
+  low_cost_models_used_for: [classify, ranking, metadata]
+
+nfr:                                # SRS §17
+  availability_pct: 99
+  daily_runtime_minutes: 15
+  email_success_rate_pct: 95
+  max_memory_mb: 2048

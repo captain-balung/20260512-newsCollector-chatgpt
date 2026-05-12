@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ site.title }} · {{ edition.date }}</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; padding:0; background:#f6f7f9; color:#111;
+         font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",
+         "PingFang TC","Microsoft JhengHei",sans-serif; }
+  .wrap { max-width:680px; margin:0 auto; padding:24px; }
+  .hdr  { padding:20px 24px; background:#0f172a; color:#fff; border-radius:14px; }
+  .hdr h1 { margin:0; font-size:18px; letter-spacing:.5px; }
+  .hdr .sub { opacity:.7; font-size:12px; margin-top:4px; }
+  .dash { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:16px 0; }
+  .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; }
+  .card .l { font-size:11px; color:#6b7280; text-transform:uppercase; letter-spacing:.5px; }
+  .card .v { font-size:18px; font-weight:600; margin-top:4px; }
+  .sec  { background:#fff; border:1px solid #e5e7eb; border-radius:14px;
+          padding:18px; margin:14px 0; }
+  .sec h2 { margin:0 0 10px; font-size:15px; }
+  .art { padding:12px 0; border-top:1px dashed #e5e7eb; }
+  .art:first-child { border-top:none; padding-top:0; }
+  .art h3 { margin:0; font-size:14px; }
+  .art h3 a { color:#0a2540; text-decoration:none; }
+  .art .meta { font-size:11px; color:#6b7280; margin:4px 0 8px; }
+  .art .sum { margin:0; }
+  .art .ins { background:#f0f9ff; border-left:3px solid #0284c7; padding:8px 10px;
+              border-radius:6px; margin:8px 0 0; font-size:13px; }
+  .art .imp { font-size:12px; color:#7c2d12; margin-top:4px; }
+  .tags { margin-top:6px; }
+  .tag { display:inline-block; font-size:11px; background:#eef2ff; color:#3730a3;
+         padding:1px 6px; border-radius:999px; margin-right:4px; }
+  .ft { text-align:center; color:#6b7280; font-size:11px; padding:14px 0 4px; }
+  @media (prefers-color-scheme: dark) {
+    body{background:#0b0f17;color:#e5e7eb}
+    .card,.sec{background:#111827;border-color:#1f2937}
+    .card .l{color:#9ca3af} .art .meta{color:#9ca3af}
+    .art h3 a{color:#93c5fd}
+    .art .ins{background:#0c2030;border-color:#38bdf8}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr">
+    <h1>{{ site.title }}</h1>
+    <div class="sub">{{ edition.date }} · {{ site.subtitle }}</div>
+  </div>
+
+  {% if edition.dashboard and edition.dashboard.cards %}
+  <div class="dash">
+    {% for card in edition.dashboard.cards %}
+    <div class="card">
+      <div class="l">{{ card.label }}</div>
+      <div class="v">{{ card.value }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% for sec in edition.sections %}
+    {% if sec.articles %}
+    <div class="sec">
+      <h2>{{ sec.icon }} {{ sec.label }}</h2>
+      {% for a in sec.articles %}
+      <div class="art">
+        <h3><a href="{{ a.source_url }}">{{ a.title }}</a></h3>
+        <div class="meta">{{ a.source_name }} · score {{ a.final_score }} · {{ a.importance }}</div>
+        <p class="sum">{{ a.summary }}</p>
+        {% if a.insight %}<div class="ins"><b>{{ a.perspective }}</b> — {{ a.insight }}</div>{% endif %}
+        {% if a.market_impact %}<div class="imp">📈 {{ a.market_impact }}</div>{% endif %}
+        {% if a.tags %}
+        <div class="tags">{% for t in a.tags %}<span class="tag">#{{ t }}</span>{% endfor %}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+
+  {% if edition.trends %}
+  <div class="sec">
+    <h2>📡 趨勢雷達</h2>
+    {% for t in edition.trends[:8] %}
+    <div class="art">
+      <h3>{{ t.keyword }}</h3>
+      <div class="meta">{{ t.window_days }}d · 出現 {{ t.occurrences }} 次 · velocity {{ "%.2f"|format(t.velocity) }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="ft">
+    <a href="{{ site_base_url }}">查看 Portal</a> ·
+    <a href="{{ site_base_url }}/archive/{{ edition.date }}/">今日完整版本</a><br>
+    Daily AI Insights — Generated {{ edition.generated_at }}
+  </div>
+</div>
+</body>
+</html>

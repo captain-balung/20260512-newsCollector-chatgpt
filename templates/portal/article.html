@@ -1,0 +1,71 @@
+{% extends "_base.html" %}
+{% block title %}{{ edition.date }} · {{ site.title }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ site.title }} {{ edition.date }} 期數{% endblock %}
+{% block og_desc %}{{ edition.sections[0].articles[0].summary if edition.sections and edition.sections[0].articles else site.subtitle }}{% endblock %}
+{% block og_url %}{{ site_base_url }}/archive/{{ edition.date }}/{% endblock %}
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"NewsArticle",
+  "headline":"{{ site.title }} {{ edition.date }}",
+  "datePublished":"{{ edition.generated_at }}",
+  "author":{"@type":"Person","name":"{{ site.author }}"},
+  "publisher":{"@type":"Organization","name":"{{ site.title }}"},
+  "mainEntityOfPage":"{{ site_base_url }}/archive/{{ edition.date }}/"
+}
+</script>
+{% endblock %}
+{% block content %}
+
+<div class="mb-6 flex items-baseline gap-3">
+  <h1 class="text-2xl font-semibold tracking-tight">{{ edition.date }} 期</h1>
+  <a href="{{ path_prefix }}/" class="text-sm text-slate-500 hover:text-emerald-700 dark:hover:text-emerald-400">← 回首頁</a>
+</div>
+
+{% for sec in edition.sections %}
+  {% if sec.articles %}
+  <section id="{{ sec.id }}" class="mb-8">
+    <h2 class="text-lg font-semibold mb-3">{{ sec.icon }} {{ sec.label }}</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {% for a in sec.articles %}
+      <article id="{{ a.url_hash }}" class="rounded-xl border border-slate-200 dark:border-slate-800
+              bg-white dark:bg-slate-900 p-4">
+        <h3 class="font-semibold leading-snug">
+          <a href="{{ a.source_url }}" target="_blank" rel="noopener">{{ a.title }}</a>
+        </h3>
+        <div class="mt-1 text-[11px] text-slate-500">{{ a.source_name }} · score {{ a.final_score }}</div>
+        <p class="mt-2 text-sm">{{ a.summary }}</p>
+        {% if a.insight %}
+        <div class="mt-2 text-sm bg-sky-50 dark:bg-sky-950/40 border-l-2 border-sky-500 p-2 rounded">
+          <b>{{ a.perspective }}</b> — {{ a.insight }}
+        </div>
+        {% endif %}
+        {% if a.market_impact %}<div class="mt-2 text-xs text-amber-700 dark:text-amber-400">📈 {{ a.market_impact }}</div>{% endif %}
+        {% if a.tags %}
+        <div class="mt-2 flex flex-wrap gap-1">
+          {% for t in a.tags %}<span class="text-[11px] rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5">#{{ t }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+{% endfor %}
+
+{% if edition.trends %}
+<section class="mb-8">
+  <h2 class="text-lg font-semibold mb-3">📡 趨勢雷達</h2>
+  <div class="grid md:grid-cols-3 gap-3">
+    {% for t in edition.trends[:9] %}
+    <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3">
+      <div class="font-semibold">{{ t.keyword }}</div>
+      <div class="text-xs text-slate-500 mt-1">{{ t.window_days }}d · {{ t.occurrences }} 次</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

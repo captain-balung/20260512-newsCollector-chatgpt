@@ -1,0 +1,12 @@
+{"ts": "2026-05-12T09:06:49.651530Z", "level": "INFO", "logger": "src.pipeline.deduplicator", "msg": "dedup stats: {'by_url': 0, 'by_title': 1, 'by_embedding': 0, 'by_db': 0}; 12 in → 11 out"}
+{"ts": "2026-05-12T09:06:50.000232Z", "level": "INFO", "logger": "dai.pipeline", "msg": "edition written (6 articles, eval=0.71)"}
+{"ts": "2026-05-12T09:06:50.103339Z", "level": "INFO", "logger": "src.emailer.sender", "msg": "[mock email] would send to=<unset> subject=[Daily AI Insights] 2026-05-12 今日 AI 情報 size_html=7642B"}
+{"ts": "2026-05-12T09:11:11.071466Z", "level": "INFO", "logger": "src.pipeline.deduplicator", "msg": "dedup stats: {'by_url': 0, 'by_title': 1, 'by_embedding': 0, 'by_db': 0}; 12 in → 11 out"}
+{"ts": "2026-05-12T09:11:11.436932Z", "level": "INFO", "logger": "dai.pipeline", "msg": "edition written (6 articles, eval=0.71)"}
+{"ts": "2026-05-12T09:11:11.513400Z", "level": "INFO", "logger": "src.emailer.sender", "msg": "[mock email] would send to=<unset> subject=[Daily AI Insights] 2026-05-12 今日 AI 情報 size_html=7642B"}
+{"ts": "2026-05-12T09:13:05.546537Z", "level": "INFO", "logger": "src.pipeline.deduplicator", "msg": "dedup stats: {'by_url': 0, 'by_title': 1, 'by_embedding': 0, 'by_db': 0}; 12 in → 11 out"}
+{"ts": "2026-05-12T09:13:05.807106Z", "level": "INFO", "logger": "dai.pipeline", "msg": "edition written (6 articles, eval=0.65)"}
+{"ts": "2026-05-12T09:13:05.877970Z", "level": "INFO", "logger": "src.emailer.sender", "msg": "[mock email] would send to=<unset> subject=[Daily AI Insights] 2026-05-12 今日 AI 情報 size_html=7830B"}
+{"ts": "2026-05-12T09:21:39.289155Z", "level": "INFO", "logger": "src.pipeline.deduplicator", "msg": "dedup stats: {'by_url': 0, 'by_title': 1, 'by_embedding': 0, 'by_db': 0}; 12 in → 11 out"}
+{"ts": "2026-05-12T09:21:39.561640Z", "level": "INFO", "logger": "dai.pipeline", "msg": "edition written (6 articles, eval=0.65)"}
+{"ts": "2026-05-12T09:21:39.639217Z", "level": "INFO", "logger": "src.emailer.sender", "msg": "[mock email] would send to=<unset> subject=[Daily AI Insights] 2026-05-12 今日 AI 情報 size_html=7869B"}

@@ -6,15 +6,15 @@ Version: 2.0
 Last Updated: 2026-05-12  
 Owner: Captain Balung
 
-\---
+---
 
-# 1\. 專案概述 (Project Overview)
+# 1. 專案概述 (Project Overview)
 
 ## 1.1 專案名稱
 
 **Daily AI Insights — AI 產業每日決策情報系統**
 
-\---
+---
 
 ## 1.2 專案願景
 
@@ -34,7 +34,7 @@ Owner: Captain Balung
 * Email Newsletter
 * GitHub Archive
 
-\---
+---
 
 ## 1.3 核心價值
 
@@ -45,7 +45,7 @@ Owner: Captain Balung
 * 建立個人品牌型 AI 媒體
 * 建立未來 RAG / AI Agent 可使用之知識資產
 
-\---
+---
 
 ## 1.4 產品定位
 
@@ -63,9 +63,9 @@ Owner: Captain Balung
 * 專家觀點摘要
 * 長期趨勢分析
 
-\---
+---
 
-# 2\. 系統架構 (System Architecture)
+# 2. 系統架構 (System Architecture)
 
 ## 2.1 系統架構總覽
 
@@ -75,7 +75,7 @@ Owner: Captain Balung
 * GitHub Actions Workflow
 * Static Hosting Architecture
 
-\---
+---
 
 ## 2.2 Pipeline Flow
 
@@ -99,7 +99,7 @@ Formatter
 Publisher
 ```
 
-\---
+---
 
 ## 2.3 核心模組
 
@@ -114,9 +114,9 @@ Publisher
 |Formatter|HTML / JSON / Markdown|
 |Publisher|GitHub Pages / Email 發布|
 
-\---
+---
 
-# 3\. 資料來源系統 (Data Sources)
+# 3. 資料來源系統 (Data Sources)
 
 ## 3.1 Tier 1 — 高可信度來源
 
@@ -128,7 +128,7 @@ Publisher
 * Google The Keyword
 * Hugging Face Blog
 
-\---
+---
 
 ## 3.2 Tier 2 — 技術與研究社群
 
@@ -137,7 +137,7 @@ Publisher
 * arXiv AI Papers
 * Papers With Code
 
-\---
+---
 
 ## 3.3 Tier 3 — 教育與政策
 
@@ -145,7 +145,7 @@ Publisher
 * 台灣國科會 RSS
 * 原住民族委員會公告
 
-\---
+---
 
 ## 3.4 Tier 4 — 金融市場
 
@@ -153,9 +153,9 @@ Publisher
 * Alpha Vantage
 * Polygon.io（未來）
 
-\---
+---
 
-# 4\. 資訊過濾與評分系統
+# 4. 資訊過濾與評分系統
 
 ## 4.1 評分模型
 
@@ -166,32 +166,32 @@ Publisher
 |relevance|0-10|
 |novelty|0-10|
 |impact|0-10|
-|taiwan\_related|0-10|
-|market\_signal|0-10|
+|taiwan_related|0-10|
+|market_signal|0-10|
 
-\---
+---
 
 ## 4.2 最終分數公式
 
 ```python
-final\_score =
-    relevance \* 0.30 +
-    novelty \* 0.20 +
-    impact \* 0.30 +
-    taiwan\_related \* 0.10 +
-    market\_signal \* 0.10
+final_score =
+    relevance * 0.30 +
+    novelty * 0.20 +
+    impact * 0.30 +
+    taiwan_related * 0.10 +
+    market_signal * 0.10
 ```
 
-\---
+---
 
 ## 4.3 選稿條件
 
 ### 條件
 
-* final\_score >= 7.0
-* source\_confidence >= 0.6
+* final_score >= 7.0
+* source_confidence >= 0.6
 
-\---
+---
 
 ## 4.4 去重機制
 
@@ -199,12 +199,12 @@ final\_score =
 
 ```yaml
 dedup:
-  - url\_hash
-  - title\_similarity
-  - embedding\_similarity
+  - url_hash
+  - title_similarity
+  - embedding_similarity
 ```
 
-\---
+---
 
 ## 4.5 Embedding Similarity
 
@@ -213,9 +213,9 @@ dedup:
 * 使用 Gemini Embedding 或 sentence-transformers
 * Cosine Similarity > 0.88 視為重複新聞
 
-\---
+---
 
-# 5\. AI 處理系統 (AI Processing)
+# 5. AI 處理系統 (AI Processing)
 
 ## 5.1 AI 任務拆分
 
@@ -226,7 +226,7 @@ dedup:
 |Insight|Gemini Pro|
 |Embedding|Gemini Embedding|
 
-\---
+---
 
 ## 5.2 Prompt Governance
 
@@ -244,7 +244,7 @@ forbidden:
   - exaggerated claims
 ```
 
-\---
+---
 
 ## 5.3 AI Output Contract
 
@@ -256,12 +256,12 @@ forbidden:
   "summary": "",
   "insight": "",
   "importance": "",
-  "market\_impact": "",
-  "tags": \[]
+  "market_impact": "",
+  "tags": []
 }
 ```
 
-\---
+---
 
 ## 5.4 專家觀點規則
 
@@ -273,9 +273,9 @@ forbidden:
 * AI 生態分析
 * 台灣政策分析
 
-\---
+---
 
-# 6\. 趨勢追蹤系統 (Trend Tracking)
+# 6. 趨勢追蹤系統 (Trend Tracking)
 
 ## 6.1 跨日脈絡分析
 
@@ -287,7 +287,7 @@ forbidden:
 
 的主題變化。
 
-\---
+---
 
 ## 6.2 Narrative Tracking
 
@@ -300,7 +300,7 @@ OpenAI
 → AI Operating System
 ```
 
-\---
+---
 
 ## 6.3 熱門主題追蹤
 
@@ -311,9 +311,9 @@ OpenAI
 * 新興模型
 * 開源框架
 
-\---
+---
 
-# 7\. 內容分類系統
+# 7. 內容分類系統
 
 ## 7.1 六大核心分類
 
@@ -324,19 +324,19 @@ OpenAI
 5. 🧠 底層架構與開源模型
 6. ⚖️ 法律倫理與社會衝擊
 
-\---
+---
 
 ## 7.2 每日內容規格
 
 每個分類：
 
-* 2\~3 則新聞
+* 2~3 則新聞
 * 至少 1 則專家觀點
 * 至少 1 則高可信來源
 
-\---
+---
 
-# 8\. Email Delivery System
+# 8. Email Delivery System
 
 ## 8.1 發送時間
 
@@ -344,7 +344,7 @@ OpenAI
 
 * 09:00 AM (UTC+8)
 
-\---
+---
 
 ## 8.2 Email 格式
 
@@ -354,7 +354,7 @@ OpenAI
 * Dark Mode Support
 * 卡片式 Layout
 
-\---
+---
 
 ### Plain Text 版本
 
@@ -363,7 +363,7 @@ OpenAI
 * Markdown fallback
 * 全展開摘要
 
-\---
+---
 
 ## 8.3 Email 限制
 
@@ -373,7 +373,7 @@ OpenAI
 |圖片|避免大量 inline image|
 |JS|禁止|
 
-\---
+---
 
 ## 8.4 Email Client 相容性
 
@@ -384,15 +384,15 @@ OpenAI
 * Apple Mail
 * Mobile Gmail
 
-\---
+---
 
-# 9\. Portal \& Archive System
+# 9. Portal & Archive System
 
 ## 9.1 Hosting
 
 * GitHub Pages
 
-\---
+---
 
 ## 9.2 功能需求
 
@@ -402,7 +402,7 @@ OpenAI
 * 市場指標
 * 最新情報
 
-\---
+---
 
 ### 歷史檔案
 
@@ -410,7 +410,7 @@ OpenAI
 * Tag Filter
 * 分類篩選
 
-\---
+---
 
 ## 9.3 SEO
 
@@ -421,24 +421,24 @@ OpenAI
 * Sitemap
 * Structured Data
 
-\---
+---
 
-# 10\. Data Schema
+# 10. Data Schema
 
 ## 10.1 JSON Schema
 
 ```json
 {
-  "schema\_version": "2.0",
-  "generated\_at": "",
-  "pipeline\_version": "",
+  "schema_version": "2.0",
+  "generated_at": "",
+  "pipeline_version": "",
   "date": "",
   "dashboard": {},
-  "sections": \[]
+  "sections": []
 }
 ```
 
-\---
+---
 
 ## 10.2 Article Schema
 
@@ -448,18 +448,18 @@ OpenAI
   "summary": "",
   "insight": "",
   "importance": "",
-  "source\_url": "",
-  "source\_name": "",
-  "confidence\_score": 0,
-  "final\_score": 0,
-  "tags": \[],
-  "embedding\_id": ""
+  "source_url": "",
+  "source_name": "",
+  "confidence_score": 0,
+  "final_score": 0,
+  "tags": [],
+  "embedding_id": ""
 }
 ```
 
-\---
+---
 
-# 11\. Observability \& Monitoring
+# 11. Observability & Monitoring
 
 ## 11.1 Metrics
 
@@ -467,14 +467,14 @@ OpenAI
 
 ```yaml
 metrics:
-  - articles\_fetched
-  - articles\_filtered
-  - generation\_time
-  - email\_success\_rate
-  - api\_token\_usage
+  - articles_fetched
+  - articles_filtered
+  - generation_time
+  - email_success_rate
+  - api_token_usage
 ```
 
-\---
+---
 
 ## 11.2 Logging
 
@@ -484,7 +484,7 @@ metrics:
 * AI response logs
 * publish logs
 
-\---
+---
 
 ## 11.3 Alerting
 
@@ -495,31 +495,31 @@ metrics:
 * AI generation failed
 * GitHub publish failed
 
-\---
+---
 
-# 12\. Failure Recovery
+# 12. Failure Recovery
 
 ## 12.1 Retry Policy
 
 ```yaml
-retry\_policy:
-  max\_retry: 3
+retry_policy:
+  max_retry: 3
   backoff: exponential
 ```
 
-\---
+---
 
 ## 12.2 Fallback Strategy
 
 ```yaml
 fallbacks:
-  - cached\_data
-  - previous\_successful\_run
+  - cached_data
+  - previous_successful_run
 ```
 
-\---
+---
 
-# 13\. Security
+# 13. Security
 
 ## 13.1 Secrets Management
 
@@ -529,7 +529,7 @@ fallbacks:
 * SMTP Credentials
 * SendGrid API Key
 
-\---
+---
 
 ## 13.2 GitHub Secrets
 
@@ -538,18 +538,18 @@ fallbacks:
 * 不可 hardcode
 * 必須存於 GitHub Secrets
 
-\---
+---
 
-# 14\. Cost Control
+# 14. Cost Control
 
 ## 14.1 成本限制
 
 ```yaml
-daily\_token\_budget:
-monthly\_budget:
+daily_token_budget:
+monthly_budget:
 ```
 
-\---
+---
 
 ## 14.2 模型策略
 
@@ -563,9 +563,9 @@ monthly\_budget:
 * Ranking
 * Metadata
 
-\---
+---
 
-# 15\. 技術堆棧
+# 15. 技術堆棧
 
 |類別|技術|
 |-|-|
@@ -578,9 +578,9 @@ monthly\_budget:
 |Email|SMTP / SendGrid|
 |Storage|JSON + SQLite|
 
-\---
+---
 
-# 16\. GitHub Actions Workflow
+# 16. GitHub Actions Workflow
 
 ## 16.1 Workflow 拆分
 
@@ -592,7 +592,7 @@ monthly\_budget:
 * API
 * GitHub Trending
 
-\---
+---
 
 ### process.yml
 
@@ -602,7 +602,7 @@ monthly\_budget:
 * Ranking
 * Dedup
 
-\---
+---
 
 ### publish.yml
 
@@ -612,9 +612,9 @@ monthly\_budget:
 * GitHub Pages
 * Archive Update
 
-\---
+---
 
-# 17\. Non-functional Requirements
+# 17. Non-functional Requirements
 
 |項目|目標|
 |-|-|
@@ -623,9 +623,9 @@ monthly\_budget:
 |Email Success Rate|> 95%|
 |Max Memory Usage|< 2GB|
 
-\---
+---
 
-# 18\. Future Roadmap
+# 18. Future Roadmap
 
 ## Phase 1 — MVP
 
@@ -633,7 +633,7 @@ monthly\_budget:
 * AI Summarization
 * Daily Email
 
-\---
+---
 
 ## Phase 2 — Intelligence Layer
 
@@ -641,7 +641,7 @@ monthly\_budget:
 * Narrative Analysis
 * Taiwan Policy Radar
 
-\---
+---
 
 ## Phase 3 — AI Agent
 
@@ -649,9 +649,9 @@ monthly\_budget:
 * Self Evaluation
 * Dynamic Source Expansion
 
-\---
+---
 
-# 19\. Acceptance Criteria
+# 19. Acceptance Criteria
 
 ## MVP 驗收標準
 
@@ -663,7 +663,7 @@ monthly\_budget:
 4. JSON schema 驗證成功
 5. 每則新聞包含 AI Insight
 
-\---
+---
 
 ## 品質條件
 
@@ -671,9 +671,9 @@ monthly\_budget:
 * AI hallucination rate < 5%
 * Email Rendering 正常
 
-\---
+---
 
-# 20\. Long-term Vision
+# 20. Long-term Vision
 
 本系統最終目標並非：
 

@@ -1,0 +1,35 @@
+name: fetch
+
+on:
+  workflow_call:
+    inputs:
+      use_mock:
+        type: string
+        required: false
+        default: "0"
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    env:
+      USE_MOCK: ${{ inputs.use_mock }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Fetch sources
+        run: python -m scripts.run_pipeline fetch
+
+      - name: Upload artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: collector-cache
+          path: data/cache/
+          retention-days: 3

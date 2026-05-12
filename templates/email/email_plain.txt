@@ -1,0 +1,4 @@
+{{ md }}
+
+—
+Daily AI Insights · Generated {{ edition.generated_at }}

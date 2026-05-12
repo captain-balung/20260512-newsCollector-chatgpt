@@ -1,0 +1,62 @@
+name: process
+
+on:
+  workflow_call:
+    inputs:
+      use_mock:
+        type: string
+        required: false
+        default: "0"
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    env:
+      USE_MOCK: ${{ inputs.use_mock }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      DAILY_TOKEN_BUDGET: ${{ secrets.DAILY_TOKEN_BUDGET }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Restore collector cache
+        uses: actions/download-artifact@v4
+        with:
+          name: collector-cache
+          path: data/cache/
+
+      - name: Restore state (db + budget)
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/db
+            data/state
+          key: dai-state-${{ github.run_id }}
+          restore-keys: |
+            dai-state-
+
+      - name: Run AI processing
+        run: python -m scripts.run_pipeline process
+
+      - name: Save state cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/db
+            data/state
+          key: dai-state-${{ github.run_id }}
+
+      - name: Upload edition
+        uses: actions/upload-artifact@v4
+        with:
+          name: edition
+          path: data/archive/
+          retention-days: 7

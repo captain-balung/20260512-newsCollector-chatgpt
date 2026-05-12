@@ -1,0 +1,52 @@
+# Daily AI Insights — orchestrator workflow (SRS §16).
+# Runs fetch → process → publish sequentially; each step exposes a job so failures
+# can be retried via re-run individual jobs.
+
+name: daily
+
+on:
+  schedule:
+    # 09:00 Asia/Taipei = 01:00 UTC
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      use_mock:
+        description: "Set to 1 to skip AI/email calls"
+        required: false
+        default: "0"
+
+permissions:
+  contents: write          # to commit docs/ and data/
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  fetch:
+    name: Fetch sources
+    uses: ./.github/workflows/fetch.yml
+    secrets: inherit
+    with:
+      use_mock: ${{ github.event.inputs.use_mock || '0' }}
+
+  process:
+    name: AI processing
+    needs: fetch
+    uses: ./.github/workflows/process.yml
+    secrets: inherit
+    with:
+      use_mock: ${{ github.event.inputs.use_mock || '0' }}
+
+  publish:
+    name: Publish & email
+    needs: process
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
+    with:
+      use_mock: ${{ github.event.inputs.use_mock || '0' }}

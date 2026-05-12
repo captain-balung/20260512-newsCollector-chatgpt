@@ -1,0 +1,158 @@
+{% extends "_base.html" %}
+{% block title %}{{ site.title }} — 今日 AI 決策情報{% endblock %}
+{% block og_title %}{{ site.title }} — {{ edition.date }} 今日情報{% endblock %}
+{% block og_desc %}{{ edition.sections[0].articles[0].summary if edition.sections and edition.sections[0].articles else site.subtitle }}{% endblock %}
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"{{ site.title }}",
+  "url":"{{ site_base_url }}/",
+  "description":"{{ site.subtitle }}",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"{{ site_base_url }}/archive.html?q={search_term_string}",
+    "query-input":"required name=search_term_string"
+  }
+}
+</script>
+{% endblock %}
+{% block content %}
+
+<section class="rounded-2xl border border-slate-200 dark:border-slate-800
+                bg-gradient-to-br from-emerald-50 to-sky-50 dark:from-slate-900 dark:to-slate-800
+                p-6 mb-6">
+  <div class="flex items-baseline gap-3 flex-wrap">
+    <h1 class="text-2xl font-semibold tracking-tight">今日 AI 決策情報</h1>
+    <span class="text-sm text-slate-500 dark:text-slate-400">{{ edition.date }} · 共
+      {% set total = namespace(n=0) %}
+      {% for sec in edition.sections %}{% set total.n = total.n + sec.articles|length %}{% endfor %}
+      {{ total.n }} 則
+    </span>
+  </div>
+  {% if edition.dashboard and edition.dashboard.cards %}
+  <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+    {% for c in edition.dashboard.cards %}
+    <div class="rounded-xl bg-white/80 dark:bg-slate-900/60 border border-slate-200
+                dark:border-slate-800 p-3">
+      <div class="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">{{ c.label }}</div>
+      <div class="text-lg font-semibold mt-1">{{ c.value }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+{% for sec in edition.sections %}
+  {% if sec.articles %}
+  <section id="{{ sec.id }}" class="mb-8">
+    <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
+      <span>{{ sec.icon }}</span> {{ sec.label }}
+      <span class="text-xs font-normal text-slate-500">· {{ sec.articles|length }} 則</span>
+    </h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {% for a in sec.articles %}
+      <article id="{{ a.url_hash }}" class="rounded-xl border border-slate-200 dark:border-slate-800
+              bg-white dark:bg-slate-900 p-4 hover:shadow-sm transition">
+        <div class="flex items-start justify-between gap-2">
+          <h3 class="font-semibold leading-snug">
+            <a href="{{ a.source_url }}" target="_blank" rel="noopener" class="hover:text-emerald-700 dark:hover:text-emerald-400">
+              {{ a.title }}
+            </a>
+          </h3>
+          <span class="shrink-0 text-[10px] uppercase tracking-wider rounded px-1.5 py-0.5
+            {% if a.importance == 'critical' %}bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300
+            {% elif a.importance == 'high' %}bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300
+            {% elif a.importance == 'medium' %}bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300
+            {% else %}bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300{% endif %}">
+            {{ a.importance or '—' }}
+          </span>
+        </div>
+        <div class="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+          {{ a.source_name }} · score {{ a.final_score }}
+          {% if a.published_at %}· {{ a.published_at[:10] }}{% endif %}
+        </div>
+        <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">{{ a.summary }}</p>
+        {% if a.insight %}
+        <div class="mt-2 text-sm bg-sky-50 dark:bg-sky-950/40 border-l-2 border-sky-500 p-2 rounded">
+          <span class="font-medium">{{ a.perspective }}</span> — {{ a.insight }}
+        </div>
+        {% endif %}
+        {% if a.market_impact %}
+        <div class="mt-2 text-xs text-amber-700 dark:text-amber-400">📈 {{ a.market_impact }}</div>
+        {% endif %}
+        {% if a.tags %}
+        <div class="mt-2 flex flex-wrap gap-1">
+          {% for t in a.tags %}
+          <span class="text-[11px] rounded-full bg-slate-100 dark:bg-slate-800 px-2 py-0.5">#{{ t }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+{% endfor %}
+
+{% if edition.trends %}
+<section class="mb-8">
+  <h2 class="text-lg font-semibold mb-3">📡 趨勢雷達</h2>
+  <div class="grid md:grid-cols-3 gap-3">
+    {% for t in edition.trends[:9] %}
+    <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3">
+      <div class="flex items-baseline justify-between">
+        <div class="font-semibold">{{ t.keyword }}</div>
+        <div class="text-[10px] uppercase text-slate-500">{{ t.window_days }}d</div>
+      </div>
+      <div class="text-xs text-slate-500 mt-1">
+        出現 {{ t.occurrences }} 次 · velocity
+        <span class="{% if t.velocity > 0.5 %}text-emerald-600{% elif t.velocity < -0.2 %}text-rose-600{% endif %}">
+          {{ '%.2f' % t.velocity }}
+        </span>
+      </div>
+      {% if t.samples %}
+      <ul class="mt-2 text-[12px] text-slate-600 dark:text-slate-400 list-disc list-inside space-y-0.5">
+        {% for s in t.samples[:2] %}<li>{{ s }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if edition.narratives %}
+<section class="mb-8">
+  <h2 class="text-lg font-semibold mb-3">🧵 敘事追蹤</h2>
+  <div class="space-y-4">
+    {% for n in edition.narratives %}
+    <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4">
+      <div class="font-semibold">{{ n.thread_title }}</div>
+      <ol class="mt-2 list-decimal list-inside text-sm space-y-1">
+        {% for step in n.arc %}<li>{{ step }}</li>{% endfor %}
+      </ol>
+      {% if n.implication %}
+      <div class="mt-2 text-xs text-slate-500 dark:text-slate-400">{{ n.implication }}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if editions %}
+<section class="mb-8">
+  <h2 class="text-lg font-semibold mb-3">📚 最近期數</h2>
+  <ul class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+    {% for e in editions[1:9] %}
+    <li><a class="block rounded-lg border border-slate-200 dark:border-slate-800
+              bg-white dark:bg-slate-900 px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-800"
+              href="{{ path_prefix }}/{{ e.url }}">{{ e.date }} <span class="text-xs text-slate-500">· {{ e.article_count }}</span></a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% endblock %}

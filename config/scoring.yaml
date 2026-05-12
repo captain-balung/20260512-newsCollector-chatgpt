@@ -1,0 +1,49 @@
+# Scoring weights (SRS §4.2) and selection thresholds (§4.3)
+weights:
+  relevance: 0.30
+  novelty: 0.20
+  impact: 0.30
+  taiwan_related: 0.10
+  market_signal: 0.10
+
+thresholds:
+  final_score_min: 7.0
+  source_confidence_min: 0.6
+
+# Deduplication (SRS §4.4 + §4.5)
+dedup:
+  url_hash: true
+  title_similarity_threshold: 92      # rapidfuzz ratio (0..100)
+  embedding_similarity_threshold: 0.88  # cosine
+
+# Keyword boosts used by the heuristic scorer (used when AI scoring unavailable)
+keyword_boosts:
+  taiwan_related:
+    - 台灣
+    - taiwan
+    - TSMC
+    - 國科會
+    - 教育部
+  market_signal:
+    - earnings
+    - 股價
+    - 上市
+    - IPO
+    - 收購
+    - acquires
+  high_impact:
+    - GPT-5
+    - Gemini
+    - Claude
+    - Llama
+    - benchmark
+    - 開源
+    - 監管
+    - regulation
+
+# Section quotas (SRS §7.2)
+section_quota:
+  per_section_min: 2
+  per_section_max: 3
+  min_expert_perspective_per_section: 1
+  min_high_confidence_per_section: 1

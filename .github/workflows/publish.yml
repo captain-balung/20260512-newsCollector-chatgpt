@@ -1,0 +1,74 @@
+name: publish
+
+on:
+  workflow_call:
+    inputs:
+      use_mock:
+        type: string
+        required: false
+        default: "0"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      USE_MOCK: ${{ inputs.use_mock }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      SITE_BASE_URL: ${{ secrets.SITE_BASE_URL }}
+      ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Restore edition
+        uses: actions/download-artifact@v4
+        with:
+          name: edition
+          path: data/archive/
+
+      - name: Publish (docs/ + email)
+        run: python -m scripts.run_pipeline publish
+
+      - name: Commit docs/
+        run: |
+          git config user.name "daily-ai-insights-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/ data/archive/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(daily): publish edition $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Upload Pages artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy-pages:
+    needs: publish
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}{{ site.title }}{% endblock %}</title>
+<meta name="description" content="{{ site.subtitle }} — AI 產業每日決策情報">
+
+{# ----- SEO / OpenGraph / Twitter Card / JSON-LD ----- #}
+{% block head_extra %}{% endblock %}
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:type" content="{% block og_type %}website{% endblock %}">
+<meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
+<meta property="og:description" content="{% block og_desc %}{{ site.subtitle }}{% endblock %}">
+<meta property="og:url" content="{% block og_url %}{{ site_base_url }}/{% endblock %}">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ self.og_title() }}">
+<meta name="twitter:description" content="{{ self.og_desc() }}">
+
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS" href="{{ path_prefix }}/feed.xml">
+<link rel="canonical" href="{{ self.og_url() }}">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: { fontFamily: { sans:[
+      'Inter','-apple-system','BlinkMacSystemFont','Segoe UI','PingFang TC',
+      'Microsoft JhengHei','sans-serif']}}}
+  };
+  // dark-mode preference
+  (function(){
+    const t = localStorage.getItem('dai-theme');
+    if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="{{ path_prefix }}/assets/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased font-sans">
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur sticky top-0 z-30">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-4">
+    <a href="{{ path_prefix }}/" class="font-semibold tracking-tight text-lg">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 align-middle mr-1.5"></span>
+      {{ site.title }}
+    </a>
+    <nav class="text-sm text-slate-600 dark:text-slate-300 flex gap-4 ml-2">
+      <a href="{{ path_prefix }}/" class="hover:text-slate-900 dark:hover:text-white">首頁</a>
+      <a href="{{ path_prefix }}/archive.html" class="hover:text-slate-900 dark:hover:text-white">歷史</a>
+      <a href="{{ path_prefix }}/feed.xml" class="hover:text-slate-900 dark:hover:text-white">RSS</a>
+    </nav>
+    <div class="ml-auto flex items-center gap-2">
+      <div class="relative">
+        <input id="q" type="search" placeholder="搜尋摘要 / 觀點 / tag…"
+               class="pl-8 pr-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-700
+                      bg-white/80 dark:bg-slate-900/80 text-sm w-64 focus:outline-none
+                      focus:ring-2 focus:ring-emerald-500/40" />
+        <svg class="absolute left-2 top-2 w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/>
+             <path d="m21 21-4.3-4.3"/></svg>
+      </div>
+      <button id="theme-toggle" class="text-slate-500 hover:text-slate-900 dark:hover:text-white p-1"
+              aria-label="切換主題">
+        <span class="dark:hidden">🌙</span><span class="hidden dark:inline">☀️</span>
+      </button>
+    </div>
+  </div>
+  <div id="search-panel" class="hidden border-t border-slate-200 dark:border-slate-800
+       bg-white dark:bg-slate-900 max-h-[60vh] overflow-auto">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm"></div>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-4 py-6">
+{% block content %}{% endblock %}
+</main>
+
+<footer class="max-w-5xl mx-auto px-4 py-10 text-xs text-slate-500 dark:text-slate-400 text-center">
+  {{ site.title }} · 由 {{ site.author }} 經營 ·
+  本站內容含 AI 自動產製,引用第三方新聞請以原始來源為準
+</footer>
+<script src="{{ path_prefix }}/assets/app.js" defer></script>
+</body>
+</html>

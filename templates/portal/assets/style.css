@@ -1,0 +1,19 @@
+/* Minor adjustments on top of Tailwind */
+:root { --emerald: #059669; }
+html { scroll-behavior: smooth; }
+::selection { background: rgba(5, 150, 105, .25); }
+
+/* Search highlight */
+mark.dai-hit {
+  background-color: rgba(250, 204, 21, .35);
+  color: inherit;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+.dark mark.dai-hit { background-color: rgba(250, 204, 21, .2); }
+
+/* Subtle reveal on cards */
+article {
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+article:hover { transform: translateY(-1px); }
