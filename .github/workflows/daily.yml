@@ -17,8 +17,6 @@ on:
 
 permissions:
   contents: write          # to commit docs/ and data/
-  pages: write
-  id-token: write
 
 concurrency:
   group: daily

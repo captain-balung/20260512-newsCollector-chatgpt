@@ -10,3 +10,6 @@
 {"ts": "2026-05-12T09:21:39.289155Z", "level": "INFO", "logger": "src.pipeline.deduplicator", "msg": "dedup stats: {'by_url': 0, 'by_title': 1, 'by_embedding': 0, 'by_db': 0}; 12 in → 11 out"}
 {"ts": "2026-05-12T09:21:39.561640Z", "level": "INFO", "logger": "dai.pipeline", "msg": "edition written (6 articles, eval=0.65)"}
 {"ts": "2026-05-12T09:21:39.639217Z", "level": "INFO", "logger": "src.emailer.sender", "msg": "[mock email] would send to=<unset> subject=[Daily AI Insights] 2026-05-12 今日 AI 情報 size_html=7869B"}
+{"ts": "2026-05-12T09:23:31.314021Z", "level": "INFO", "logger": "src.pipeline.deduplicator", "msg": "dedup stats: {'by_url': 0, 'by_title': 1, 'by_embedding': 0, 'by_db': 0}; 12 in → 11 out"}
+{"ts": "2026-05-12T09:23:31.579816Z", "level": "INFO", "logger": "dai.pipeline", "msg": "edition written (6 articles, eval=0.65)"}
+{"ts": "2026-05-12T09:23:31.647716Z", "level": "INFO", "logger": "src.emailer.sender", "msg": "[mock email] would send to=<unset> subject=[Daily AI Insights] 2026-05-12 今日 AI 情報 size_html=7869B"}

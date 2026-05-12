@@ -1,0 +1,500 @@
+{
+  "schema_version": "2.0",
+  "generated_at": "2026-05-12T09:23:31.577216",
+  "pipeline_version": "2.0.0",
+  "date": "2026-05-12",
+  "dashboard": {
+    "cards": [
+      {
+        "label": "今日新聞",
+        "value": "6"
+      },
+      {
+        "label": "來源數",
+        "value": "6"
+      },
+      {
+        "label": "高影響事件",
+        "value": "0"
+      },
+      {
+        "label": "趨勢主題",
+        "value": "30"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "giants_market",
+      "icon": "🏢",
+      "label": "巨頭動向與市場脈動",
+      "articles": [
+        {
+          "title": "Google 推 Gemini for Educ",
+          "summary": "摘要(mock):Google 推 Gemini for Education 鎖定校園 Google launches Gemini fo。本則為自動產生的 mock summary,僅供 pipeline 驗證使用。請設定 USE_MOCK=0 並提供 Gemini API Key 取得真實摘要。",
+          "insight": "(教育科技分析 · mock)此事件反映 AI 產業結構性變化,建議追蹤後續模型釋出節奏與政策回應。",
+          "perspective": "教育科技分析",
+          "importance": "medium",
+          "market_impact": "可觀察短期模型供應與資料中心採購信號",
+          "source_url": "https://blog.google/technology/ai/gemini-edu",
+          "source_name": "Google AI Blog",
+          "confidence_score": 0.9,
+          "final_score": 8.84,
+          "scores": {
+            "relevance": 10.0,
+            "novelty": 8.5,
+            "impact": 6.5,
+            "taiwan_related": 3.0,
+            "market_signal": 0.0
+          },
+          "tags": [
+            "google",
+            "education"
+          ],
+          "embedding_id": "a1b2c3d4e5f60003",
+          "published_at": "2026-05-11T19:00:00+00:00",
+          "section": "giants_market",
+          "url_hash": "a1b2c3d4e5f60003"
+        },
+        {
+          "title": "Anthropic 推出 Claude Agen",
+          "summary": "摘要(mock):Anthropic 推出 Claude Agents 框架 Anthropic releases an agents f。本則為自動產生的 mock summary,僅供 pipeline 驗證使用。請設定 USE_MOCK=0 並提供 Gemini API Key 取得真實摘要。",
+          "insight": "(媒體設計分析 · mock)此事件反映 AI 產業結構性變化,建議追蹤後續模型釋出節奏與政策回應。",
+          "perspective": "媒體設計分析",
+          "importance": "medium",
+          "market_impact": "可觀察短期模型供應與資料中心採購信號",
+          "source_url": "https://www.anthropic.com/news/claude-agents",
+          "source_name": "Anthropic News",
+          "confidence_score": 0.95,
+          "final_score": 8.054,
+          "scores": {
+            "relevance": 10.0,
+            "novelty": 8.81,
+            "impact": 6.5,
+            "taiwan_related": 0.0,
+            "market_signal": 0.0
+          },
+          "tags": [
+            "anthropic",
+            "agents"
+          ],
+          "embedding_id": "a1b2c3d4e5f60002",
+          "published_at": "2026-05-11T22:00:00+00:00",
+          "section": "giants_market",
+          "url_hash": "a1b2c3d4e5f60002"
+        },
+        {
+          "title": "OpenAI 釋出 GPT 新版本 強化長上下文",
+          "summary": "摘要(mock):OpenAI 釋出 GPT 新版本 強化長上下文推理 OpenAI announces a major model up。本則為自動產生的 mock summary,僅供 pipeline 驗證使用。請設定 USE_MOCK=0 並提供 Gemini API Key 取得真實摘要。",
+          "insight": "(AI 生態分析 · mock)此事件反映 AI 產業結構性變化,建議追蹤後續模型釋出節奏與政策回應。",
+          "perspective": "AI 生態分析",
+          "importance": "medium",
+          "market_impact": "可觀察短期模型供應與資料中心採購信號",
+          "source_url": "https://openai.com/blog/example-gpt-update",
+          "source_name": "OpenAI Blog",
+          "confidence_score": 0.95,
+          "final_score": 7.411,
+          "scores": {
+            "relevance": 9.5,
+            "novelty": 9.13,
+            "impact": 5.0,
+            "taiwan_related": 0.0,
+            "market_signal": 0.0
+          },
+          "tags": [
+            "openai"
+          ],
+          "embedding_id": "a1b2c3d4e5f60001",
+          "published_at": "2026-05-12T01:00:00+00:00",
+          "section": "giants_market",
+          "url_hash": "a1b2c3d4e5f60001"
+        }
+      ]
+    },
+    {
+      "id": "dev_tools_agent",
+      "icon": "🛠️",
+      "label": "開發者工具與 AI Agent",
+      "articles": [
+        {
+          "title": "國科會公布新一輪 AI 研究補助 重點為主權模型",
+          "summary": "摘要(mock):國科會公布新一輪 AI 研究補助 重點為主權模型 Taiwan NSTC announces new AI grants。本則為自動產生的 mock summary,僅供 pipeline 驗證使用。請設定 USE_MOCK=0 並提供 Gemini API Key 取得真實摘要。",
+          "insight": "(台灣政策分析 · mock)此事件反映 AI 產業結構性變化,建議追蹤後續模型釋出節奏與政策回應。",
+          "perspective": "台灣政策分析",
+          "importance": "medium",
+          "market_impact": "可觀察短期模型供應與資料中心採購信號",
+          "source_url": "https://www.nstc.gov.tw/news/ai-grant",
+          "source_name": "台灣國科會",
+          "confidence_score": 0.8,
+          "final_score": 7.012,
+          "scores": {
+            "relevance": 9.5,
+            "novelty": 9.18,
+            "impact": 6.5,
+            "taiwan_related": 6.0,
+            "market_signal": 0.0
+          },
+          "tags": [
+            "ai"
+          ],
+          "embedding_id": "a1b2c3d4e5f60009",
+          "published_at": "2026-05-12T01:30:00+00:00",
+          "section": "giants_market",
+          "url_hash": "a1b2c3d4e5f60009"
+        }
+      ]
+    },
+    {
+      "id": "generative_media",
+      "icon": "🎵",
+      "label": "生成式多媒體與創作",
+      "articles": []
+    },
+    {
+      "id": "edu_tech",
+      "icon": "📚",
+      "label": "教育科技與應用創新",
+      "articles": []
+    },
+    {
+      "id": "infra_open_source",
+      "icon": "🧠",
+      "label": "底層架構與開源模型",
+      "articles": [
+        {
+          "title": "Hugging Face 上架新開源 70B 模",
+          "summary": "摘要(mock):Hugging Face 上架新開源 70B 模型 對標 Llama A new 70B parameter open-。本則為自動產生的 mock summary,僅供 pipeline 驗證使用。請設定 USE_MOCK=0 並提供 Gemini API Key 取得真實摘要。",
+          "insight": "(AI 生態分析 · mock)此事件反映 AI 產業結構性變化,建議追蹤後續模型釋出節奏與政策回應。",
+          "perspective": "AI 生態分析",
+          "importance": "medium",
+          "market_impact": "可觀察短期模型供應與資料中心採購信號",
+          "source_url": "https://huggingface.co/blog/new-open-llm",
+          "source_name": "Hugging Face Blog",
+          "confidence_score": 0.85,
+          "final_score": 8.959,
+          "scores": {
+            "relevance": 10.0,
+            "novelty": 8.08,
+            "impact": 9.5,
+            "taiwan_related": 0.0,
+            "market_signal": 0.0
+          },
+          "tags": [
+            "ai"
+          ],
+          "embedding_id": "a1b2c3d4e5f60004",
+          "published_at": "2026-05-11T15:00:00+00:00",
+          "section": "infra_open_source",
+          "url_hash": "a1b2c3d4e5f60004"
+        }
+      ]
+    },
+    {
+      "id": "law_ethics_society",
+      "icon": "⚖️",
+      "label": "法律倫理與社會衝擊",
+      "articles": [
+        {
+          "title": "歐盟提出新版 AI 監管細則 聚焦透明度與資料來",
+          "summary": "摘要(mock):歐盟提出新版 AI 監管細則 聚焦透明度與資料來源 The EU publishes detailed implemen。本則為自動產生的 mock summary,僅供 pipeline 驗證使用。請設定 USE_MOCK=0 並提供 Gemini API Key 取得真實摘要。",
+          "insight": "(媒體設計分析 · mock)此事件反映 AI 產業結構性變化,建議追蹤後續模型釋出節奏與政策回應。",
+          "perspective": "媒體設計分析",
+          "importance": "medium",
+          "market_impact": "可觀察短期模型供應與資料中心採購信號",
+          "source_url": "https://example.com/ethics-paper",
+          "source_name": "Google The Keyword",
+          "confidence_score": 0.85,
+          "final_score": 8.254,
+          "scores": {
+            "relevance": 10.0,
+            "novelty": 7.56,
+            "impact": 6.5,
+            "taiwan_related": 0.0,
+            "market_signal": 0.0
+          },
+          "tags": [
+            "ai"
+          ],
+          "embedding_id": "a1b2c3d4e5f60012",
+          "published_at": "2026-05-11T10:00:00+00:00",
+          "section": "law_ethics_society",
+          "url_hash": "a1b2c3d4e5f60012"
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "keyword": "mock",
+      "window_days": 7,
+      "occurrences": 18,
+      "velocity": 18.0,
+      "samples": []
+    },
+    {
+      "keyword": "mock",
+      "window_days": 14,
+      "occurrences": 18,
+      "velocity": 18.0,
+      "samples": []
+    },
+    {
+      "keyword": "mock",
+      "window_days": 30,
+      "occurrences": 18,
+      "velocity": 18.0,
+      "samples": []
+    },
+    {
+      "keyword": "gemini",
+      "window_days": 7,
+      "occurrences": 9,
+      "velocity": 9.0,
+      "samples": [
+        "Google 推 Gemini for Educ"
+      ]
+    },
+    {
+      "keyword": "gemini",
+      "window_days": 14,
+      "occurrences": 9,
+      "velocity": 9.0,
+      "samples": [
+        "Google 推 Gemini for Educ"
+      ]
+    },
+    {
+      "keyword": "gemini",
+      "window_days": 30,
+      "occurrences": 9,
+      "velocity": 9.0,
+      "samples": [
+        "Google 推 Gemini for Educ"
+      ]
+    },
+    {
+      "keyword": "摘要",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "本則為自動產生的",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "summary",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "僅供",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "pipeline",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "驗證使用",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "請設定",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "並提供",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "api",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "key",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "取得真實摘要",
+      "window_days": 7,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "摘要",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "本則為自動產生的",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "summary",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "僅供",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "pipeline",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "驗證使用",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "請設定",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "並提供",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "api",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "key",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "取得真實摘要",
+      "window_days": 14,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "摘要",
+      "window_days": 30,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    },
+    {
+      "keyword": "本則為自動產生的",
+      "window_days": 30,
+      "occurrences": 6,
+      "velocity": 6.0,
+      "samples": []
+    }
+  ],
+  "narratives": [],
+  "intelligence": {
+    "emerging_topics": [],
+    "suggested_sources": []
+  },
+  "metrics": {
+    "elapsed_seconds": 0.318,
+    "counters": {
+      "articles_fetched": 12,
+      "articles_filtered": 6
+    },
+    "gauges": {
+      "dedup_drop_total": 1
+    },
+    "timers": {
+      "fetch": 0.0,
+      "dedup": 0.052,
+      "score": 0.0,
+      "ai_enrich": 0.0
+    }
+  },
+  "evaluation": {
+    "overall": 0.651,
+    "graded_at": "2026-05-12T09:23:31.577398",
+    "components": {
+      "coverage": 0.167,
+      "diversity": 1.0,
+      "quality": 0.809,
+      "insight_rate": 1.0
+    },
+    "warnings": [
+      "section coverage below 80%"
+    ],
+    "dedup_stats": {
+      "by_url": 0,
+      "by_title": 1,
+      "by_embedding": 0,
+      "by_db": 0
+    },
+    "run_metrics": {
+      "elapsed_seconds": 0.318,
+      "counters": {
+        "articles_fetched": 12,
+        "articles_filtered": 6
+      },
+      "gauges": {
+        "dedup_drop_total": 1
+      },
+      "timers": {
+        "fetch": 0.0,
+        "dedup": 0.052,
+        "score": 0.0,
+        "ai_enrich": 0.0
+      }
+    }
+  }
+}

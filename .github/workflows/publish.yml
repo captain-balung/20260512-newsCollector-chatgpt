@@ -10,8 +10,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   publish:
@@ -46,7 +44,7 @@ jobs:
       - name: Publish (docs/ + email)
         run: python -m scripts.run_pipeline publish
 
-      - name: Commit docs/
+      - name: Commit docs/ to main (Pages serves from main/docs)
         run: |
           git config user.name "daily-ai-insights-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -57,18 +55,3 @@ jobs:
             git commit -m "chore(daily): publish edition $(date -u +%Y-%m-%d)"
             git push
           fi
-
-      - name: Upload Pages artefact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
-
-  deploy-pages:
-    needs: publish
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4

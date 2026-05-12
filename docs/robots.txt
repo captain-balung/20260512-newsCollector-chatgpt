@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://captain-balung.github.io/20260512-newsCollector-chatgpt/sitemap.xml

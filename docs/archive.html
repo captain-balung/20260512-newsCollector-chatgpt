@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>歷史檔案 · Daily AI Insights</title>
+<meta name="description" content="AI 產業每日決策情報系統 — AI 產業每日決策情報">
+
+<meta property="og:site_name" content="Daily AI Insights">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daily AI Insights 歷史檔案">
+<meta property="og:description" content="日期、tag、分類篩選的歷史 AI 情報檔案">
+<meta property="og:url" content="https://captain-balung.github.io/20260512-newsCollector-chatgpt/archive.html">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daily AI Insights 歷史檔案">
+<meta name="twitter:description" content="日期、tag、分類篩選的歷史 AI 情報檔案">
+
+<link rel="alternate" type="application/rss+xml" title="Daily AI Insights RSS" href="/20260512-newsCollector-chatgpt/feed.xml">
+<link rel="canonical" href="https://captain-balung.github.io/20260512-newsCollector-chatgpt/archive.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: { fontFamily: { sans:[
+      'Inter','-apple-system','BlinkMacSystemFont','Segoe UI','PingFang TC',
+      'Microsoft JhengHei','sans-serif']}}}
+  };
+  // dark-mode preference
+  (function(){
+    const t = localStorage.getItem('dai-theme');
+    if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
+<link rel="stylesheet" href="/20260512-newsCollector-chatgpt/assets/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased font-sans">
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur sticky top-0 z-30">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-4">
+    <a href="/20260512-newsCollector-chatgpt/" class="font-semibold tracking-tight text-lg">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 align-middle mr-1.5"></span>
+      Daily AI Insights
+    </a>
+    <nav class="text-sm text-slate-600 dark:text-slate-300 flex gap-4 ml-2">
+      <a href="/20260512-newsCollector-chatgpt/" class="hover:text-slate-900 dark:hover:text-white">首頁</a>
+      <a href="/20260512-newsCollector-chatgpt/archive.html" class="hover:text-slate-900 dark:hover:text-white">歷史</a>
+      <a href="/20260512-newsCollector-chatgpt/feed.xml" class="hover:text-slate-900 dark:hover:text-white">RSS</a>
+    </nav>
+    <div class="ml-auto flex items-center gap-2">
+      <div class="relative">
+        <input id="q" type="search" placeholder="搜尋摘要 / 觀點 / tag…"
+               class="pl-8 pr-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-700
+                      bg-white/80 dark:bg-slate-900/80 text-sm w-64 focus:outline-none
+                      focus:ring-2 focus:ring-emerald-500/40" />
+        <svg class="absolute left-2 top-2 w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/>
+             <path d="m21 21-4.3-4.3"/></svg>
+      </div>
+      <button id="theme-toggle" class="text-slate-500 hover:text-slate-900 dark:hover:text-white p-1"
+              aria-label="切換主題">
+        <span class="dark:hidden">🌙</span><span class="hidden dark:inline">☀️</span>
+      </button>
+    </div>
+  </div>
+  <div id="search-panel" class="hidden border-t border-slate-200 dark:border-slate-800
+       bg-white dark:bg-slate-900 max-h-[60vh] overflow-auto">
+    <div class="max-w-5xl mx-auto px-4 py-2 text-sm"></div>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-4 py-6">
+
+<h1 class="text-2xl font-semibold tracking-tight mb-1">歷史檔案</h1>
+<p class="text-slate-500 text-sm mb-6">共 1 期。用上方搜尋框可全文搜尋。</p>
+
+<div class="mb-6 flex gap-2 flex-wrap" id="filter-bar">
+  <input id="filter-date" type="date" class="px-2 py-1 rounded-md border border-slate-200
+       dark:border-slate-700 bg-white dark:bg-slate-900 text-sm">
+  <select id="filter-section" class="px-2 py-1 rounded-md border border-slate-200
+       dark:border-slate-700 bg-white dark:bg-slate-900 text-sm">
+    <option value="">全部分類</option>
+  </select>
+  <input id="filter-tag" placeholder="輸入 tag (例: agents)" class="px-2 py-1 rounded-md border
+       border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm">
+  <button id="clear-filters" class="text-sm text-slate-500 hover:text-rose-600">清除</button>
+</div>
+
+<ul class="space-y-2" id="edition-list">
+  <li class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 flex items-center justify-between">
+    <div>
+      <a class="font-semibold hover:text-emerald-700 dark:hover:text-emerald-400" href="/20260512-newsCollector-chatgpt/archive/2026-05-12/">2026-05-12</a>
+      <span class="ml-2 text-xs text-slate-500">6 則</span>
+    </div>
+    <a class="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-white" href="/20260512-newsCollector-chatgpt/archive/2026-05-12/data.json">JSON</a>
+  </li>
+</ul>
+
+<div id="search-results" class="mt-6"></div>
+</main>
+
+<footer class="max-w-5xl mx-auto px-4 py-10 text-xs text-slate-500 dark:text-slate-400 text-center">
+  Daily AI Insights · 由 Captain Balung 經營 ·
+  本站內容含 AI 自動產製,引用第三方新聞請以原始來源為準
+</footer>
+<script src="/20260512-newsCollector-chatgpt/assets/app.js" defer></script>
+</body>
+</html>
